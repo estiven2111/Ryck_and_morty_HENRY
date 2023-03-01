@@ -1,0 +1,50 @@
+.container{
+    border:1px solid grey;
+    background-color: lightgray;
+    border-radius: 30px;
+    width: 150px;
+    padding: 10px;
+    box-shadow: 0 0 10px black ;
+   
+}
+.container:hover{
+    background-color: rgba(71, 145, 150, 0.783);
+    transition: width 2s, height 4s;
+    transform: translate(15px);
+    overflow: auto;
+}
+
+.image{
+width: 130px;
+} 
+
+.buttonContainer{ 
+    /* border: 1px solid grey; */
+     display: flex;
+    justify-content: flex-end;
+}
+
+ .buttonContainer button{
+    background-color: salmon;
+    color: white;
+    border: 0px;
+    border-radius: 2px;
+}
+
+.dataContainer{
+text-align: center;
+padding: 10px;
+}
+
+.dataContainer h2{
+    margin: 2px;
+    font-size: 16px;
+    color: darkslategrey;
+}
+
+.dataContainer h4{
+    margin: 2px;
+    font-size: 14px;
+    color: darkslategrey;
+}
+ 

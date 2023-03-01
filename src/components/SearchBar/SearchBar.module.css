@@ -1,0 +1,27 @@
+.container{
+ margin: auto;
+    width: 30%;
+    background-color:  rgba(103, 168, 163, 0.617);
+    border-radius: 50px;
+    margin-top: 20px;
+}
+.container input{
+    width: 100px;
+    height: 500px;
+border-radius: 20px;
+font-size: 20px;
+height: 20px;
+margin: 20px;
+text-align: center;
+}
+.container button{
+    border-radius: 5px;
+    height: 30px;
+    width: 80px;
+    background-color: darkgray;
+    color: white;
+    padding: 1px;
+    font-size: 12px;
+    border: 0px;
+    font-size: 20px;
+    }

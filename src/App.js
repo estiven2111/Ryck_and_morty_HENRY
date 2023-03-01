@@ -1,36 +1,86 @@
+import { useState,useEffect } from 'react'
 import './App.css'
-import Card from './components/Card.jsx'
-import Cards from './components/Cards.jsx'
-import SearchBar from './components/SearchBar.jsx'
-import characters, { Rick } from './data.js'
- 
-function App () {
+import Cards from './components/Cards/Cards.jsx'
+import NavBar from './components/NavBar/NavBar.jsx'
+import { Routes, Route } from 'react-router-dom'
+import About from './components/About/About.jsx'
+import Detail from './components/Detail/Detail.jsx'
+import Form from './components/form/Form'
+import { useLocation,useNavigate } from 'react-router-dom'
+
+function App() {
+  // estado local
+  const [characters, setCharacters] = useState([]);
+
+  const navigate = useNavigate();
+
+  //componente
+  const [access, setAccess] = useState(false);
+  const username = "ft35b@gmail.com";
+  const password = "123456";
+
+  function login(userData){
+    if(userData.username === username && userData.password === password){
+
+      setAccess(true);
+      navigate("/Home");
+    }
+  }
+  function logout(){
+    setAccess(false)
+    navigate("/")
+  }
+
+
+ //todo: lo que hace esto es estar observando constantemente que acces este en true si pasa a falso me redirigue 
+ //todo inmediatamente al inicio de la pagina 
+  useEffect(() => {
+    !access && navigate('/');
+ }, [access]);
+
+
+  const onSearch = (character) => {
+    fetch(`https://rickandmortyapi.com/api/character/${character}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.name) {
+          setCharacters((oldChars) => [...oldChars, data]);
+
+        } else {
+          window.alert("No hay personaje con ese ID");
+        }
+      })
+
+  }
+
+  const onClose = (id) => {
+    setCharacters(characters.filter((char) => char.id !== id));
+  }
+  const location = useLocation();
+  
+
   return (
     <div className='App' style={{ padding: '25px' }}>
       <div>
-        <Card
-          name={Rick.name}
-          species={Rick.species}
-          gender={Rick.gender}
-          image={Rick.image}
-          onClose={() => window.alert('Emulamos que se cierra la card')}
-        />
-        
+        {location.pathname !== "/" && <NavBar onSearch={onSearch} logout={logout} />}
+
       </div>
       <hr />
-      <div>
-        <Cards
-          characters={characters}
-        />
-      </div>
-      <hr />
-      <div>
-        <SearchBar
-          onSearch={(characterID) => window.alert(characterID)}
-        />
-      </div>
+      <Routes>
+
+        <Route path="/About" element={<About />} />
+        <Route path="/Home" element={<Cards characters={characters}
+          onClose={onClose} />} />
+        <Route path="/Detail/:detailId" element={<Detail />} />
+        <Route exact path="/" element={<Form login={login}/>} />
+      </Routes>
+
     </div>
+
   )
+
 }
 
 export default App
+
+
