@@ -1,3 +1,28 @@
-div {
+.container {
+    background-color: rgba(67, 145, 204, 0.532);
     color:white;
+    width: 60%;
+    margin: auto;
+    padding: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+    color: rgb(255, 130, 5);
+}
+p{
+    font-size: 20px;
+    text-align: justify;
+    text-decoration: dashed;
+}
+img{
+    width: 300px;
+}
+img:hover{
+    transition: width 2s, height 4s;
+    transform: translate(15px);
+    overflow: auto;
+}
+h2{
+    color:rgb(226, 178, 18);
+    font-family:'Times New Roman', Times, serif;
 }

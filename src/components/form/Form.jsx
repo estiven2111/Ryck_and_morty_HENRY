@@ -29,7 +29,7 @@ export default function Form(props){
             [name]:value
         })
     )
-     console.log(errors);
+    
     };
    const handleSubmit = (e) =>{
     e.preventDefault()

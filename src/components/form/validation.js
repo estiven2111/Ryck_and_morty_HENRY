@@ -1,7 +1,7 @@
 
 
 export default function validation(input){
-    console.log(input);
+  
 const emailregex = /\S+@\S+\.\S+/;
 const passregex = new RegExp("[0-9]");
 const errors = {};
